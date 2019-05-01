@@ -1,0 +1,12 @@
+选择器
+$（".class"）  ,$("#id"),   $(this)选择当前的Html元素 ,$(var)选择定义的对象
+
+
+1.  Jquery支持任意对象抛出事件。
+var myVar{
+   postChanges:()=>{
+     $(myVar).trigger("postChanges")
+    }
+  }
+  $(myVar).on("postChanges",()=>{
+  })
