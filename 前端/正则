@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>zheng ze </title>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("#check").on('click',function(){
+            var str = /^[A-Za-z0-9]{6,12}$/;
+       // debugger;
+         if(str.test($("#userName").val())){
+             alert("验证通过");
+          }else{
+            alert("验证错误，只能是数字字母组成的6-12位长度的字符串");
+         }
+        })
+        })
+        </script>
+    </head>
+    <body>
+        <input id="userName" type="text"></input>
+        <button id="check">Check it</button>
+    </body>
+</html>
