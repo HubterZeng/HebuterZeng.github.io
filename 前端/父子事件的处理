@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+        <html><head>
+                <title>父子事件</title>
+                <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        //  $("#cccc").on('click',function(){
+                        //     var id=$(this).attr("id");
+                        //     console.log(id);
+                        //  })
+                        //  $("#input_child").on('click',function(){
+                        //     var id=$(this).attr("id");
+                        //     console.log(id);
+                        //  })
+                        //  $("#sss").on('click',function(){
+                        //     var id=$(this).attr("id");
+                        //     console.log(id);
+                        //  })
+                         $("#cccc,#input_child,#sss").on('click',function(event){
+                            var id=$(this).attr("id");
+                            // $(event.target).css("background-color", "orange");谁点谁变色
+                            event.stopPropagation();    //  阻止事件冒泡
+                            console.log(id);
+                         })
+                         
+                    })
+                </script>
+            </head>
+            <body>
+                <div id="cccc" style="
+            background-color: black;
+            height: 100px;
+        ">
+                    <div id="sss" style="
+            background-color: burlywood;
+        ">
+                        <input type="submit" name="child" id="input_child">
+                    </div>
+                </div>
+            
+        </body></html>
