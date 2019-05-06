@@ -1,0 +1,15 @@
+声明式注解
+@Reposity   Repository用于标注数据访问组件，即DAO组件.
+@Service
+@Controller
+
+注入型注解
+@Autowired
+@Resource
+
+
+AOP型注解
+@PostConstruct
+
+条件式注解
+@value()
