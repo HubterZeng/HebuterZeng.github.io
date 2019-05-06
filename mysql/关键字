@@ -1,0 +1,2 @@
+　mysql> SELECT * FROM table LIMIT 5,10;         //检索记录行 6   -  15  
+  10是要查询的记录的条数，6是返回的起始索引。
