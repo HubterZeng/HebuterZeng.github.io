@@ -1,1 +1,3 @@
-alias  命令 的别名不能以$开头
+alias  命令 的别名不能以$开头，
+source /etc/profile
+断开会话，重连生效。
