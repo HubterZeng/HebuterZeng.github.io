@@ -1,0 +1,17 @@
+1.Provide choice at every level. Spring lets you defer design decisions as late as possible.
+动态性（运行时的多态）
+
+
+2.Spring embraces flexibility and is not opinionated about how things should be done.
+类似于接口，提供规范。
+
+
+3.保持强大的向后兼容性。Spring的发展已经被小心地管理，以在版本之间强制进行很少的破坏性更改。
+Spring支持精心选择的JDK版本和第三方库，以方便维护依赖于Spring的应用程序和库。
+
+4.Care about API design. 
+The Spring team  puts a lot of thought and time  into making APIs that are intuitive and that hold up across many versions and many years.
+    
+    
+5.为代码质量设定高标准。Spring框架非常强调有意义的、当前的和准确的javadoc。
+它是极少数可以声明干净代码结构且包之间没有循环依赖关系的项目之一
