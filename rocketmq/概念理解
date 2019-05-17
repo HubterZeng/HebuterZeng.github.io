@@ -14,4 +14,7 @@ BrokerServerCluster
 第五个是index  ,用来根据Messaage中key  建立索引 。
 
 
+ConsumerGroup 要保持Subscription Consistent for  one group。
+
+
 原文参考  ：http://rocketmq.apache.org/docs/rmq-arc/ 
