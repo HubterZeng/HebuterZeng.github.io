@@ -1,0 +1,28 @@
+DI, It is a process whereby objects define their dependencies 
+它是一个对象定义依赖关系的过程
+   constructor arguments, 
+   arguments to a factory method, 
+   or properties that are set on the object instance after it is constructed or returned from a factory method.
+可以通过以上三种方式，声明一个对象的依赖关系。
+从而拥有“被注入者实例”的引用。
+
+
+The org.springframework.beans and org.springframework.context packages are the basis for Spring Framework’s IoC container.
+ApplicationContext是BeanFactory的一个完整超集
+
+
+bean是由Spring IoC容器实例化、组装和管理的对象。
+三个名词 The org.springframework.context.ApplicationContext          The configuration metadata        Beans
+
+业务和元数据被 容器 读取 ，生成了一个可工作的系统。
+
+
+
+
+
+
+
+
+
+
+ 
