@@ -16,5 +16,10 @@ BrokerServerCluster
 
 ConsumerGroup 要保持Subscription Consistent for  one group。
 
+先启动name server，再启动broker，这时候broker会将自己注册到name server。
+应用程序中的producer启动的时候，首先连接一台name server，获取broker的地址列表；
+然后再和broker建立连接，接下来就可以发送消息了。
+
 
 原文参考  ：http://rocketmq.apache.org/docs/rmq-arc/ 
+https://www.jianshu.com/p/fe8c89a781a3
