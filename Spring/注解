@@ -1,3 +1,9 @@
+XML设置的另一种替代方法是基于注释的配置，它依赖于   字节码元数据   来连接组件，而不是角括号声明。
+需要注意的是，xml配置会覆盖注解的配置
+Annotation injection is performed before XML injection. 
+Thus, the XML configuration overrides the annotations for properties wired through both approaches.
+
+
 声明式注解
 @Reposity   Repository用于标注数据访问组件，即DAO组件.
 @Service
