@@ -1,0 +1,8 @@
+https://blog.csdn.net/yinni11/article/details/80532036  如果同一个消费者组内，订阅的topic 一致，tags不一致  
+
+http://rocketmq.apache.org/docs/filter-by-sql92-example/
+
+也就是说，在实现好友文字交流的时候：
+需要生产者以接收方为topic，自身为tag
+需要消费者以好友列表里面的所有人为tags
+然后进行监听，才能收到所有tasg的消息。而不能写循环进行一个一个tags的订阅。
