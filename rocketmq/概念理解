@@ -1,0 +1,17 @@
+NameServerCluster : 
+作用：管理broker以及路由信息
+
+BrokerServerCluster
+分为五个模块
+第一模块是broker的入口，负责处理来自客户端的请求（客户端包括生产者和消费者），这个模块叫做Remote
+
+第二个是Client 负责管理客户端的连接和维持着消费者以及topic间的映射
+
+第三个模块是 Store, 可以用来查询磁盘上存储的消息
+
+第四个是HA ,用来master和slave之间同步信息
+
+第五个是index  ,用来根据Messaage中key  建立索引 。
+
+
+原文参考  ：http://rocketmq.apache.org/docs/rmq-arc/ 
