@@ -17,6 +17,20 @@ bean是由Spring IoC容器实例化、组装和管理的对象。
 业务和元数据被 容器 读取 ，生成了一个可工作的系统。
 
 
+在容器本身中，bean定义表示为BeanDefinition对象，其中包含以下元数据   
+参考：Table 1. The bean definition      https://docs.spring.io/spring/docs/5.1.7.RELEASE/spring-framework-reference/core.html#beans-definition
+主要有Class  ,Scope,  Construct/Properties   ,Initial  Method
+分别来控制  是谁，生命周期，依赖关系和初始化的方法。
+
+
+Bean定义有三种方式：   参考  https://www.cnblogs.com/wslook/p/9161560.html
+场景分别是第三方，和自己写的。
+
+
+ 
+
+
+
 
 
 
