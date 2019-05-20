@@ -29,3 +29,6 @@ AOP型注解
 @Log4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
 原文：https://blog.csdn.net/qq_37433657/article/details/83275051 
 lombok  参考  https://www.cnblogs.com/heyonggang/p/8638374.html
+
+
+getAnnotation()  https://www.cnblogs.com/yuwenlanleng/p/6704881.html  参考
