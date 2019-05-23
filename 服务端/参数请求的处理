@@ -1,1 +1,14 @@
   移步：      https://www.cnblogs.com/yyxyqh/p/7749990.html
+  表单提交，
+  服务端接收时单个参数只需要参数名称对应即可，
+  多个参数以对象接收时，只需要参数和对象的属性名称匹配即可。
+  当传递的数据格式为Json时，
+  接收的时候加上@RequestBody 注解，会将参数中与对象属性匹配的自动填充到对象中。
+  
+  不使用@RequestBody注解时，可以接收Content-Type为application/x-www-form-urlencoded类型的请求所提交的数据，
+  数据格式：aaa=111&bbb=222
+  如果有@RequestBody注解是用于接收Content-Type为application/json类型的请求,
+  数据类型是JSON：{"aaa":"111","bbb":"222"}
+  
+  ajax必须将date属性值转为json字符串，不能为json对象（js对象，会自动转为key=value形式）。
+  并且，修改contentType的值为:application/json; charset=UTF-8,这样加了@RequestBody注解的属性才能自定映射到值
