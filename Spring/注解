@@ -32,3 +32,9 @@ lombok  参考  https://www.cnblogs.com/heyonggang/p/8638374.html
 
 
 getAnnotation()  https://www.cnblogs.com/yuwenlanleng/p/6704881.html  参考
+
+
+
+@requestBody注解
+常用来处理content-type不是默认的application/x-www-form-urlcoded编码的内容，
+比如说：application/json或者是application/xml等。一般情况下来说常用其来处理application/json类型。
