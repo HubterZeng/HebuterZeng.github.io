@@ -1,0 +1,5 @@
+ <input id="payPassword" name="payPassword" type="password">
+      id用来JS获取值，      name用于表单提交参数。
+ <input id="isSeller"name="isSeller" type="checkbox" value="true">
+      value是复选框勾选后的传递值。
+      
