@@ -12,3 +12,6 @@ var person = {
 属性访问
 person["lastName"];
 person.lastName;
+
+
+value=' "+index+" '
