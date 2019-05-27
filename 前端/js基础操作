@@ -15,3 +15,12 @@ person.lastName;
 
 
 value=' "+index+" '
+
+
+$.each(result, function (index, obj) {
+                           totalNumber++;
+                            console.log("index"+index);
+                            $("#showProducts").append("<div class='towModuleThreeFourDiv1_2'><div class='tMo_t_f_d_2'><input id='"+index+"' calss='buttonIndex' onclick='addToCart(this)'        type='button' value='"+index+"'></div><div class='towModuleThreeFourDiv1_2_1 tMo_t_f_d_2'></div><div class='towModuleThreeFourDiv1_2_2 tMo_t_f_d_2'><a href=''>" + obj.productName + "       </a></div><div class='tMo_t_f_d_2 towModuleThreeFourDiv1_2_4'></div><div class='towModuleThreeFourDiv1_2_6 tMo_t_f_d_2'><span><br>￥" + obj.productPrice + "</span></div></div>")
+                                
+                        })
+                        selectAll(totalNumber);
