@@ -1,2 +1,14 @@
 var=$("").val()
 alert(var);
+
+
+#  对象
+var person = {
+    firstName:"John",
+    lastName:"Doe",
+    age:50,
+    eyeColor:"blue"
+};
+属性访问
+person["lastName"];
+person.lastName;
