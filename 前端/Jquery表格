@@ -1,4 +1,10 @@
-
+Jquery 
+id选择器,移除dom节点的方法。
+ $("#delete").on('click',function(){
+		  for(var id of checked){
+			$('#'+id).remove();
+		  }
+		 
 原文：https://www.cnblogs.com/iriliguo/p/6363367.html
 
 
