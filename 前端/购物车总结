@@ -1,0 +1,134 @@
+页面显示部分
+注册：  常用的事件  change(),blur()
+正则用法：
+$("#username").change(function () {
+    var str = /^[A-Za-z0-9]{6,12}$/;
+    if (!str.test($("#username").val())) {
+     alert("验证错误，账号只能是数字字母组成的6-12位长度的字符串");
+    } 
+})
+表单中的input name属性是用来提交表单用的。 id是供选择器使用
+input的类型常用的有文本输入text,密码输入password,按钮 button,单选 radio
+输入框的占位符 属性 placeholder
+<input id="password"  name="password" type="password">
+
+商品首页：
+result=[
+        {
+            "createTime":"1559201366",
+            "updateTime":"1559202443",
+            "id":"6671607349",
+            "sellerId":"6671657308",
+            "productName":"1",
+            "productQuantity":"152",
+            "productPrice":"11",
+            "productDescription":"111",
+            "listingState":"1"
+        }
+]
+循环对象数组的方法
+ $.each(result, function (index, obj) {})
+ 
+ 
+
+动态添加dom：
+   $.each(result, function (index, obj) {
+                    $("#products").append(
+                        '<div id="'+obj.id+'" class="text">'
+                        + '<div class="brand">"您的ID'+obj.userID+'"</div>'
+                        +'<span class="intro">新能源汽车五座座小型轿车五座汽车五座小型轿车五座汽车</span>'
+                        +'<span class="spay">应付账款￥/span>'
+                        +'<span class="pay">实际付款：￥330.000</span>'
+                    +'</div>"');
+                });
+ 动态添加的元素必须在添加的时候绑定。否则根据浏览器的工作机制事件是绑定不上的。         
+  var tr = ("<tr  id='" + product.id + "'>" + "<td><input  type=\"checkbox\"  name=\"test\"/></td>"
+    + "<td contenteditable='true' onblur='blurEvent(this)' >" + product.productName + "</td>"
+    + "<td contenteditable='true' onblur='blurEvent(this)' >" + product.productPrice + "</td>"
+    + "<td contenteditable='true' onblur='blurEvent(this)' >" + product.productDescription + "</td>"
+    + "<td contenteditable='true' onblur='blurEvent(this)'>" + product.productQuantity + "</td>"
+    + "<td><button id='delete' onclick='deleteProduct(this)' class=\"tr-line\" >delete</button></td>"
+    + "<td><button id='offline'onclick='offline(this)' class=\"tr-line\" >offline</button></td>"
+    + "<td><button id='online' onclick='online(this)' class=\"tr-line\" >online</button></td>"
+    + "</tr>");
+$("table").append(tr);
+
+
+
+购物车页面部分：
+result=[
+    {
+        "cartDO":{
+            "createTime":"1559203677",
+            "updateTime":"1559203677",
+            "id":"6671677373",
+            "userId":"6671657313",
+            "productId":"6671607349",
+            "buyQuantity":"1"
+        },
+        "productDO":{
+            "createTime":"1559201366",
+            "updateTime":"1559202443",
+            "id":"6671607349",
+            "sellerId":"6671657308",
+            "productName":"1",
+            "productQuantity":"152",
+            "productPrice":"11",
+            "productDescription":"111",
+            "listingState":"1"
+        }
+    }
+]
+嵌套对象的访问
+访问：
+ $.each(result, function (index, obj) {
+        console.log(obj.cartDO.id);
+ })
+JS的数组，支持push,pop.
+ var checked=[];
+
+ ajax传递对象时，需要使用JSON.stringify(checked)来序列化对象，使其变为字符串。
+ $.ajax({
+    url:"ajaxCreateOrder",
+        type:'post',
+        data:{
+            'cartIds':JSON.stringify(checked)
+        },
+        dataType:'json',
+        async:'false',
+        success:function(res){
+            result=res;
+            console.log("create order");
+            url = "http:xxxxxxxxxxxxxxxxxxxxxx";
+            window.location.href = url;
+        }
+        });
+
+新订单
+result={
+    "createTime":"1559204109",
+    "updateTime":"1559204109",
+    "id":"6671687311",
+    "userId":"6671657313",
+    "details":"商品名称：1商品ID: 6671607349卖家ID: 6671657308商品描述: 111商品单价: 11.0购买数量:CartDO(id=6671677373, userId=6671657313, productId=6671607349, buyQuantity=1)",
+    "sumPrice":"11",
+    "visualState":"1"
+}
+访问方法
+ success:function(res){
+    // result=JSON.parse(res);
+    var result=res;
+    $("#orders").append(
+        '<div id="'+result.id+'" onclick="pay(this)"class="text">'
+        + '<div class="brand">"您的ID  '+result.userId+'"</div>'
+        +'<span class="intro">"您的详情  '+result.details+'"</span>'
+        +'<br>'
+        +'<span class="pay">付款：￥'+result.sumPrice+'</span>'
+        +'<button id="payButton" >PAY FOR THIS ORDER</buton>'
+        +'</div>"');
+}
+
+ 
+ 
+ 
+ 
