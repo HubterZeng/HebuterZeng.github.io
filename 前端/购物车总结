@@ -53,8 +53,6 @@ result=[
     + "</tr>");
 $("table").append(tr);
 
-
-
 购物车页面部分：
 result=[
     {
@@ -127,6 +125,279 @@ result={
         +'<button id="payButton" >PAY FOR THIS ORDER</buton>'
         +'</div>"');
 }
+
+
+
+ 商品管理页面
+<!DOCTYPE html>
+    2 <html lang="en">
+    3 
+    4 <head>
+    5     <meta charset="UTF-8">
+    6     <title>Title</title>
+    7     <style>
+    8         table {
+    9             border-collapse: collapse;
+   10             width: 500px;
+   11             text-align: center;
+   12             background-color: paleturquoise;
+   13         }
+   14 
+   15         .odd {
+   16             background-color: #ffc;
+   17 
+   18         }
+   19         .new{
+   20           background-color:#fff;
+   21           }
+   22     </style>
+   23 
+   24 
+   25 </head>
+   26 
+   27 <body>
+   28 
+   29     <table border="1" id="tab">
+   30 
+   31         <tr>
+   32             <th><input type="checkbox">select all</th>
+   33             <th>productName</th>
+   34             <th>productPrice</th>
+   35             <th>productDescription</th>
+   36              <th>productQuantity</th>
+   37             <th>删除</th>
+   38             <th>上线</th>
+   39             <th>下线</th>
+   40 
+   41         </tr>
+   42 
+   43     </table><br>
+   44     productName:<input type="text" id="productName">
+   45     productPrice:<input type="text" id="productPrice">
+   46     productDescription:<input type="text" id="productDescription">
+   47     productQuantity:<input type="text" id="productQuantity">
+   48     <input type="button" value="add" id="add">
+   49     <input type="button" value="select" id="delete">
+   50     <input type="button" value="submit modify" id="modifyValue"  onclick="modifyValue()">
+   52 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   53 <script>
+   54 
+   55 
+   56 var productArray = new Array();
+   57 var productIds=[];
+   58 var newPro=new Array(); 
+   59 function modifyValue(){
+   60 
+   61     $.ajax({
+   62         url:"ajaxUpdateProducts",
+   63             contentType: "application/json;charset=UTF-8",
+   64             data:{
+   65                 'products':JSON.stringify(productArray),
+   66             },
+   67             success:function(){
+   68                 console.log("sumbit success");
+   69             }
+   70     });
+   71 }
+   72 $("#add").click(function () {
+   73     var productName = $("#productName").val();
+   74     var productPrice = $("#productPrice").val();
+   75     var productDescription = $("#productDescription").val();
+   76     var productQuantity=$("#productQuantity").val();
+   77     $.ajax({
+   78         url: "ajaxAddProduct",
+   79             data: {
+   80                 'productName': productName,
+   81                     'productPrice': productPrice,
+   82                     'productDescription': productDescription,
+   83                     'productQuantity':productQuantity
+   84             },
+   85             success: function (res) {
+   86                 var product = new Product();
+   87                 var res1=JSON.parse(res);
+   88                 product.setListingState(true);
+   89                 product.setProductDescription(res1.productDescription);
+   90                 product.setProductPrice(res1.productPrice);
+   91                 product.setProductQuantity(res1.productQuantity);
+   92                 product.setProductId(res1.id);
+   93                 product.setProductSellerId(res1.sellerId);
+   94                 product.setProductName(res1.productName);
+   95                 productArray.push(product);
+   96 
+   97                 var tr = ("<tr  id='" + product.id + "'>" + "<td><input  type=\"checkbox\"  name=\"test\"/></td>"
+   98                     + "<td contenteditable='true' onblur='blurEvent(this)' >" + product.productName + "</td>"
+   99                     + "<td contenteditable='true' onblur='blurEvent(this)' >" + product.productPrice + "</td>"
+  100                     + "<td contenteditable='true' onblur='blurEvent(this)' >" + product.productDescription + "</td>"
+  101                     + "<td contenteditable='true' onblur='blurEvent(this)'>" + product.productQuantity + "</td>"
+  102                     + "<td><button id='delete' onclick='deleteProduct(this)' class=\"tr-line\" >delete</button></td>"
+  103                     + "<td><button id='offline'onclick='offline(this)' class=\"tr-line\" >offline</button></td>"
+  104                     + "<td><button id='online' onclick='online(this)' class=\"tr-line\" >online</button></td>"
+  105 
+  106                     + "</tr>");
+  107                 $("table").append(tr);
+  108             }
+  109     })
+  110 
+  111 })
+  112 
+  113 
+  114 
+  115 
+  116 
+  117 
+  118 function Product(_id, _sellerId, _productName, _productPrice, _productDescription, _listingState,_quantity) {
+  119     this.productName = _productName;
+  120     this.productPrice = _productPrice;
+  121     this.productDescription = _productDescription;
+  122     this.productQuantity=_quantity;
+  123     this.listingState = _listingState;
+  124     this.id = _id;
+  125     var sellerId = _sellerId;
+  126 }//var 是私有属性  this.是公有属性。  通过构造函数的方式，每一个对象单独拥有一份数据
+  127 //采用原型的方式，使得一份方法的存储被所有类的对象使用。
+  128 Product.prototype.setProductName = function (name) {
+  129     this.productName = name;
+  130 }
+  131 Product.prototype.setProductId = function (_id) {
+  132     this.id = _id;
+  133 }
+  134 Product.prototype.setProductSellerId = function (_sellerId) {
+  135     this.sellerId =_sellerId;
+  136 }
+  137 Product.prototype.setProductPrice = function (price) {
+  138     this.productPrice = price;
+  139 }
+  140 Product.prototype.setProductDescription = function (description) {
+  141     this.productDescription = description;
+  142 }
+  143 Product.prototype.setListingState = function (listingState) {
+  144     this.listingState = listingState;
+  145 }
+  146 Product.prototype.setProductQuantity=function(productQuantity){
+  147     this.productQuantity=productQuantity;
+  148 }
+  149 $("input:eq(0)").bind("click", function () {
+  150     $("input").prop("checked", $(this).prop("checked"));
+  151 })
+  152 
+  153     $("table td").dblclick(function () {
+  154         $(this).attr("contenteditable", "true");
+  155     });
+  156 
+  157       var myMap=new Map();
+  158       myMap.set(1,"productName");
+  159       myMap.set(2,"productPrice");
+  160       myMap.set(3,"productDescription");
+  161       myMap.set(4,"productQuantity");
+  162 
+  163 
+  164 
+  165          function blurEvent (context) {
+  166             var value=context.textContent;
+  167             var id=context.parentElement.id;
+  168             console.log(id);
+  169             console.log(value);
+  170             for(let i=0;i<productArray.length;i++){
+  171                 if(productArray[i].id==id){
+  172                     var index=context.cellIndex;
+  173                     var prop=myMap.get(index);
+  174                     productArray[i][prop]=value;
+  175                 
+  176                 }
+  177             
+  178             }
+  179 
+  180             
+  181         }
+  182 
+  183 
+  184 function deleteProduct(context){
+  185     var id = context.parentElement.parentElement.id
+  186         console.log(id);
+  187     $.ajax({
+  188         url: "ajaxDeleteProduct",
+  189             data: {
+  190                 'productId': id
+  191             },
+  192             success: function () {
+  193                 console.log("delete it from my products");
+  194                 context.parentElement.parentElement.remove()
+  195             }
+  196     });
+  197 
+  198 
+  199 }
+  200 
+  201 $("#delete").on("click", function () {
+  202     var id = $(this).parents("tr").id;
+  203     $.ajax({
+  204         url: "ajaxDeleteProduct",
+  205             data: {
+  206                 'productId': id
+  207             },
+  208             success: function () {
+  209                 console.log("delete it from my products");
+  210                 $(this).parents("tr").remove();
+  211             }
+  212     });
+  213     //var s = $(this).parents("tr").find("td").eq(2).text();
+  214     //var s=$(this).parents("tr").text();?峰𹣭涓琛𸰿𼓛?𷀿?广?
+  215     //console.log(s);
+  216 
+  217 });
+  218 function offline(context){
+  219     var listingState=false;
+  220     var id = context.parentElement.parentElement.id
+  221 
+  222         console.log(id);
+  223     $.ajax({
+  224         url: "ajaxUpdateProductOnline",
+  225             data: {
+  226                 'productId': id,
+227                     'listingState': listingState
+  228             },
+  229             success: function () {
+  230                 context.parentElement.parentElement.className='odd';
+  231             }
+  232     });
+  233 
+  234 
+  235 }
+  236 
+  237 function online(context){
+  238     var listingState=true;
+  239     var id = context.parentElement.parentElement.id
+  240 
+  241         $.ajax({
+  242             url: "ajaxUpdateProductOnline",
+  243                 data: {
+  244                     'productId': id,
+  245                         'listingState': listingState
+  246                 },
+  247                 success: function () {
+  248                     context.parentElement.parentElement.className='new';
+  249                 }
+  250         });
+  251 
+  252 
+  253 }
+  254 $("input[type='button']").click(function () {
+  255     $("input[name='test']:checked").each(function () {
+  256         var num = $(this).parents("tr").index();
+  257         $("table").find("tr:eq(" + num + ")").remove();
+  258     });
+  259 });
+  260 
+  261 
+  262 
+  263 
+  264 </script>
+  265 </body>
+  266 
+  267 </html>
+
+
+
 
  
  
