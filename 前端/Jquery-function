@@ -1,0 +1,13 @@
+$.each(result, function (index, obj) {
+    if(obj.productDO.listingState==false){
+        for(let j=0;j<checked.length;j++){
+            if(obj.cartDO.id==checked[j]){
+                var rm=checked[j];
+                checked= $.grep(checked,function(value,i){
+                    return value!=rm;
+                });
+               alert( obj.productDO.productName+'Already  Not in Sell')  
+            }
+        }
+    }
+})
