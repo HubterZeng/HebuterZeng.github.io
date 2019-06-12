@@ -154,5 +154,23 @@ echo json_encode($arr);
 
 
 
+##   函数模块
+----   explode('/', $url)[0];
+explode(separator,string,limit)
+参数	描述
+separator	必需。规定在哪里分割字符串。
+string	必需。要分割的字符串。
+limit	
+可选。规定所返回的数组元素的数目。
+
+可能的值：
+
+大于 0 - 返回包含最多 limit 个元素的数组
+小于 0 - 返回包含除了最后的 -limit 个元素以外的所有元素的数组
+0 - 返回包含一个元素的数组
+
+
+---- list() 函数用数组中的元素为一组变量赋值
+
 
 
