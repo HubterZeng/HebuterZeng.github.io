@@ -1,0 +1,43 @@
+## File 类
+--Java 中的 File 类是文件和目录路径名的抽象形式。使用 File 类可以获取文件本身的一些信息，例如文件所在的目录、文件长度、文件读写权限等
+----------------------------------------------
+      String fileName = "E:\\log";
+      File files = new File(fileName);
+      String[] filesName=files.list();
+      System.out.println(filesName.length);
+      当前文件夹下文件的个数（不递归）
+      String[] filesLength = files.list((File dir,String name)-> name.endsWith(".log"));
+      System.out.println(filesLength.length);
+      只显示当前文件夹下的.log文件个数
+      
+      //读取当前文件下
+       private void addCurrentFiles(File files ,List<File> fileList, StringBuffer stringBuffer){
+        File[] files1 = files.listFiles();
+        for(File file : files1){
+            if(file.isDirectory()){
+                fileList.add(file);
+            }else {
+                stringBuffer.append(","+file.getName());
+            }
+        }
+    }
+    //递归读取文件
+    public static  void main(String[] arg){
+      String fileName = "E:\\log";
+      File files = new File(fileName);
+      List<File> fileList = new LinkedList<>();
+      StringBuffer stringBuffer = new StringBuffer();
+      TextToExel textToExel = new TextToExel();
+      textToExel.addCurrentFiles(files,fileList,stringBuffer);
+      while(!fileList.isEmpty()){
+          files = fileList.remove(0);
+          textToExel.addCurrentFiles(files,fileList,stringBuffer);
+      }
+      System.out.println( stringBuffer.toString().split(",").length);
+      System.out.println( stringBuffer.toString());
+
+
+    }
+      
+      
+-------------------------------------------------
