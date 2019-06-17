@@ -50,3 +50,18 @@ java基本的程序设计结构
   tips:先判断字符串是否为null,再判断字符串是否为空串。（null值上调用方法，会产生错误（Errors））
 
   
+##    数组  
+--   获得数组中元素的个数： array.length
+--   java中允许数组的长度是0.  new elements[0]
+-- for each 循环
+for(var :collectio) statement
+collection 这一集合表达式必须是一个数组或者是一个实现了 Iterable 接口的类对象
+用 Arrays.toString(a), 返回一个包含数组元素的字符串，这些元素被放置在括号内， 并用逗号分隔
+----------------
+-- 数组的深拷贝  
+int[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers , luckyNumbers .length);
+第一个参数是原数组的引用,第 2 个参数是新数组的长度
+-----------------------------------------------
+
+##    类
+类的访问权限
