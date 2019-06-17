@@ -33,8 +33,11 @@
           files = fileList.remove(0);
           textToExel.addCurrentFiles(files,fileList,stringBuffer);
       }
-      System.out.println( stringBuffer.toString().split(",").length);
-      System.out.println( stringBuffer.toString());
+      String[] filesName=stringBuffer.toString().split(",");
+      System.out.println(filesName.length);
+      for(String s :filesName){
+          System.out.println(s);
+      }
 
 
     }
