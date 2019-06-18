@@ -63,5 +63,122 @@ int[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers , luckyNumbers .length);
 第一个参数是原数组的引用,第 2 个参数是新数组的长度
 -----------------------------------------------
 
-##    类
-类的访问权限
+##   类
+--   类的访问权限
+数据不对----谁动了数据---谁能懂数据---权限告诉你。
+--   辅助方法设计为私有的方法
+--   类的方法可以调用任何一个对象的私有数据。
+public class DateFormate {
+    private String str="123";
+     public boolean equals(DateFormate dateFormate){
+        return str.equals(dateFormate.str);
+    }
+    public static void main(String ag[]){
+        DateFormate dateFormate = new DateFormate();
+        DateFormate dateFormate1=  new DateFormate();
+        System.out.println(dateFormate.equals(dateFormate1));   -- true
+    }
+}
+--------------------------------------------------------
+String 类的 equals()源码
+ public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String)anObject;
+            int n = value.length;
+            if (n == anotherString.value.length) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = 0;
+                while (n-- != 0) {
+                    if (v1[i] != v2[i])
+                        return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+   --------------------------------------- ----------------------
+--    final实例域
+实例域定义为 final。 构建对象时必须初始化这样的域。
+也就是说， 必须确保在每一个构造器执行之后，这个域的值被设置， 并且在后面的操作中， 不能够再对它进行修改。
+
+--    静态域
+如果将域定义为 static, 每个类中只有一个这样的域。而每一个对象对于所有的实例域却都有自己的一份拷贝。
+--    静态方法不能访问实例域（null）
+--    this引用了方法的隐式参数，即调用方法本身的对象。也可以在构造器中调用另一个构造器。
+      
+---------
+初始化数据的方法：
+-- 1：在构造器中设置
+-- 2：在声明中赋值
+-- 3： 初始化块（只要构造类的对象，这部分代码就执行）。先执行构造块，再执行构造器。
+    public class DateFormate {
+    private int i;
+    private  int j;
+    --------------
+    {
+        i=1;
+    } //初始化块
+------------------
+public DateFormate(){
+        this.j=i;
+    }
+    public void show(){
+        System.out.println(this.i+this.j);
+    }
+    public static void main(String ag[]){
+      DateFormate dateFormate =new DateFormate();
+      dateFormate.show();  -- 2
+    }
+
+}
+-------- ---------------------
+ 构造器执行过程
+ -- ：所有数据域被初始化为默认值
+ -- ：按照在类声明中出现的次序， 依次执行所有域初始化语句和初始化块   
+ -- ：如果构造器第一行调用了第二个构造器，则执行第二个构造器主体   
+ -- ：执行这个构造器的主体. -  
+------------  --------    ---------
+    
+    
+    
+ ##   类路径
+ 类存储在文件系统的子目录中。类的路径必须与包名匹配。
+ package com.haodf.service;
+ public class DateFormate  类的存储路径对于报包名的要求。
+ 
+ 
+ ------------------------
+ 注释的抽取
+ --  切换到包含想要生成文档的源文件目录
+ --  如果是一个包，应该运行命令:
+javadoc -d docDirectory nameOfPackage     
+------------     ------------------------- 
+控制可见性的访问修饰符
+1 ) 仅对本类可见 private。
+2 ) 对所有类可见 public：
+3 ) 对本包和所有子类可见 protected。
+4 ) 对本包可见—默认（很遗憾，) 不需要修饰符。      
+-----------------------------------------------------
+Object 类的理解
+--  所有的数组类塱，不管是对象数组还是基本类型的数组都扩展了 Object 类
+Employee[] staff = new Employee[10];
+obj = staff; // OK
+obj = new int[10]; // OK      
+方法：equals(),hashCode(),toString()
+------------------------------ 
+变长参数，放在参数列表的最后一个。
+public static double max (double... values)
+      
+      
+      
+      
+      
+      
+      
+      
