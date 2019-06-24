@@ -15,3 +15,6 @@ Comparator<String> comp
 = (first, second) 
 -> first.lengthO - second.lengthO;
 -----
+
+----------------------------------------------------
+一个泛型程序员的任务就是预测出所用类的未来可能有的所有用途。
