@@ -14,4 +14,60 @@ UserVerifyClient::getInstance()->checkLoginByUserName
 转而调用了
 class UserVerifyService extends UserBaseService
 
-                                              
+--------------------------------                                              
+<?php
+// 创建一个简单的数组
+$array = array(1, 2, 3, 4, 5);
+print_r($array);
+
+// 现在删除其中的所有元素，但保持数组本身不变:
+foreach ($array as $i => $value) {
+    unset($array[$i]);
+}
+print_r($array);
+
+// 添加一个单元（注意新的键名是 5，而不是你可能以为的 0）
+$array[] = 6;
+print_r($array);
+
+// 重新索引：
+$array = array_values($array);
+$array[] = 7;
+print_r($array);
+?>
+*******************************************
+Array
+(
+    [0] => 1
+    [1] => 2
+    [2] => 3
+    [3] => 4
+    [4] => 5
+)
+Array
+(
+)
+Array
+(
+    [5] => 6
+)
+Array
+(
+    [0] => 6
+    [1] => 7
+)
+---------------------------------------
+数组(Array) 的赋值总是会涉及到值的拷贝。使用引用运算符通过引用来拷贝数组
+<?php
+$arr1 = array(2, 3);
+$arr2 = $arr1;
+$arr2[] = 4; // $arr2 is changed,
+             // $arr1 is still array(2, 3)
+             
+$arr3 = &$arr1;
+$arr3[] = 4; // now $arr1 and $arr3 are the same
+?>
+---------------------------------
+魔术方法
+https://blog.csdn.net/zyzzsky/article/details/84290129
+--------------------------------
