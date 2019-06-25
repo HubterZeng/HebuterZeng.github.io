@@ -1,0 +1,17 @@
+UserVerifyClient::getInstance()->checkLoginByUserName
+
+ 1 <?php        
+ 2 class UserVerifyClient extends BaseClient
+ 3 {                
+ 4     protected function __construct()
+ 5 +--  3 行: {-------------------------------
+ 8 
+ 9     public static function getInstance()
+10 +--  7 行: {-------------------------------
+17                  
+18 }            
+19 
+转而调用了
+class UserVerifyService extends UserBaseService
+
+                                              
