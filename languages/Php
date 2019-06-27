@@ -303,4 +303,51 @@ foreach (array_expression as $key => $value)
 相对路径名称  subdirectory/foo.txt         实际路径 currentdirectory/subdirectory/foo.txt
 绝对路径      /main/foo.txt                实际路径  /main/foo.txt
 
+使用命名空间 并且建立别名
+use My\Full\Classname as Another
 
+类的概念
+$this  调用方法的对象的引用
+
+类的自动加载
+spl_autoload_register() 函数可以注册任意数量的自动加载器，当使用尚未被定义的类（class）和接口（interface）时自动去加载。
+通过注册自动加载器，脚本引擎在 PHP 出错失败前有了最后一个机会加载所需的类。
+
+构造函数
+__construct ([ mixed $args [, $... ]] ) : void
+如果子类中定义了构造函数则不会隐式调用其父类的构造函数。
+要执行父类的构造函数，需要在子类的构造函数中调用 parent::__construct()。
+如果子类没有定义构造函数则会如同一个普通的类方法一样从父类继承（假如没有被定义为 private 的话）。
+
+对属性或方法的访问控制，是通过在前面添加关键字 public（公有），protected（受保护）或 private（私有）来实现的。
+被定义为公有的类成员可以在任何地方被访问。
+被定义为受保护的类成员则可以被其自身以及其子类和父类访问。
+被定义为私有的类成员则只能被其定义所在的类访问
+
+范围解析操作符（也可称作 Paamayim Nekudotayim）或者更简单地说是一对冒号，
+可以用于访问静态成员，类常量，还可以用于覆盖类中的属性和方法。
+
+self，parent 和 static 这三个特殊的关键字是用于在类定义的内部对其属性或方法进行访问的。
+
+<?php
+class MyClass
+{
+    protected function myFunc() {
+        echo "MyClass::myFunc()\n";
+    }
+}
+
+class OtherClass extends MyClass
+{
+    // 覆盖了父类的定义
+    public function myFunc()
+    {
+        // 但还是可以调用父类中被覆盖的方法
+        parent::myFunc();
+        echo "OtherClass::myFunc()\n";
+    }
+}
+
+$class = new OtherClass();
+$class->myFunc();
+?>
