@@ -295,4 +295,12 @@ foreach (array_expression as $key => $value)
 
 还能够自定义遍历对象。
 
+--------------------------------------------、
+定义命名空间    namespace MyProject
+定义子命名空间  namespace MyProject\Sub\Level
+
+相对文件名称  foo.txt                      实际路径 currentdirectory/foo.txt
+相对路径名称  subdirectory/foo.txt         实际路径 currentdirectory/subdirectory/foo.txt
+绝对路径      /main/foo.txt                实际路径  /main/foo.txt
+
 
