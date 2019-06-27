@@ -255,3 +255,44 @@ limit
 反之如果从类的内部访问不为const或者static变量或者方法,那么就必须使用自引用的$this。
 结论 : self与$this的功能极其相似，但二者又不相同。$this不能引用静态成员和常量。self更像类本事，而$this更像是实例本身。
 
+-------------------------------
+运算符
+字符串运算符
+<?php
+$a = "Hello ";
+$b = $a . "World!"; // now $b contains "Hello World!"
+
+$a = "Hello ";
+$a .= "World!";     // now $a contains "Hello World!"
+?>
+
+-------------
+数组运算符
+$a + $b	联合	$a 和 $b 的联合。
+$a == $b	相等	如果 $a 和 $b 具有相同的键／值对则为 TRUE。
+$a === $b	全等	如果 $a 和 $b 具有相同的键／值对并且顺序和类型都相同则为 TRUE。
+$a != $b	不等	如果 $a 不等于 $b 则为 TRUE。
+$a <> $b	不等	如果 $a 不等于 $b 则为 TRUE。
+$a !== $b	不全等	如果 $a 不全等于 $b 则为 TRUE。
+----------------------------
+类型运算符
+instance of 
+-------------------
+多个php文件
+require 和 include 几乎完全一样，除了处理失败的方式不同之外。
+require 在出错时产生 E_COMPILE_ERROR 级别的错误。换句话说将导致脚本中止而 include 只产生警告（E_WARNING），脚本会继续运行
+require_once 语句和 require 语句完全相同，唯一区别是 PHP 会检查该文件是否已经被包含过，如果是则不会再次包含
+---------------------
+foreach 语法结构提供了遍历数组的简单方式。foreach 仅能够应用于数组和对象，如果尝试应用于其他数据类型的变量，或者未初始化的变量将发出错误信息。有两种语法：
+
+foreach (array_expression as $value)
+    statement
+foreach (array_expression as $key => $value)
+    statement
+第一种格式遍历给定的 array_expression 数组。每次循环中，当前单元的值被赋给 $value 并且数组内部的指针向前移一步（因此下一次循环中将会得到下一个单元）。
+
+第二种格式做同样的事，只除了当前单元的键名也会在每次循环中被赋给变量 $key。
+
+还能够自定义遍历对象。
+
+
